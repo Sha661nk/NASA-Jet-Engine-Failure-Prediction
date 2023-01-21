@@ -1,0 +1,2 @@
+# Nasa-Turbo-Jet-Engine-Failure-Prediction
+Equipment maintenance costs are high but repairing a failed equipment requires a mind-blowing amount. Hence, timely maintenance is necessary to keep the equipment in it's healthy state. In this session, we will build a failure prediction model which will help us identifying the failure prone Nasa Turbo Jets. We will start the analysis with Data wrangling and EDA, followed by model building. We will finalize the model based on performance, explainability, prediction-time, and complexity.
