@@ -1,5 +1,7 @@
 # Nasa-Turbo-Jet-Engine-Failure-Prediction
 
+https://github.com/user-attachments/assets/34f7cb2e-cf18-4082-a989-d53d3fd6d0c6
+
 ## Introduction
 Equipment maintenance costs are a significant concern, especially when repairing failed equipment can skyrocket the expenses. In mission-critical scenarios, like operating NASA Turbo Jets, ensuring reliable and efficient functioning is paramount. This project aims to leverage predictive maintenance, using historical data, to foresee potential equipment failures, thereby reducing unplanned downtimes and associated costs.
 
@@ -33,3 +35,4 @@ By proactively addressing equipment maintenance using this predictive model:
 
 ## Conclusion
 The Nasa-Turbo-Jet-Engine-Failure-Prediction project offers an advanced solution to drastically cut down on maintenance costs and ensure the utmost efficiency of NASA Turbo Jets by predicting potential failures well in advance.
+
