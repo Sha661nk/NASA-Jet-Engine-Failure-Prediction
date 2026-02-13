@@ -1,0 +1,32 @@
+// ===== Logic Starts =====
+import org.apache.spark.sql.functions._
+
+// Grouping keys: always ORDER_PROC_ID; include MRN/ACC_NUM too if they exist in df (safer)
+val groupCols = Seq("ORDER_PROC_ID", "MRN", "ACC_NUM").filter(df.columns.contains)
+
+// Columns we want to preserve as-is (they repeat within an order)
+val passthroughCols =
+  df.columns.filterNot(c => c.equalsIgnoreCase("LINE") || c.equalsIgnoreCase("IMPRESSION") || groupCols.contains(c))
+
+// Build ordered impression text: sort by LINE, trim, filter out null/blank, then concat into one string
+val impressionAgg = expr(
+  """
+    concat_ws(' ',
+      filter(
+        transform(
+          sort_array(collect_list(struct(LINE, IMPRESSION))),
+          x -> trim(x.IMPRESSION)
+        ),
+        s -> s is not null and s <> ''
+      )
+    )
+  """
+).alias("IMPRESSION")
+
+// A transformed *copy* of df (your existing df remains untouched)
+val dfCombined =
+  df.groupBy(groupCols.map(col): _*)
+    .agg(
+      (passthroughCols.map(c => first(col(c), ignoreNulls = true).alias(c)) :+ impressionAgg): _*
+    )
+// ===== Logic Ends =====
